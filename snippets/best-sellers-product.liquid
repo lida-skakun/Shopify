@@ -1,0 +1,59 @@
+<li class="best-sellers-item">
+  {% if product %}
+    <a href="{{ product.url }}" class="best-sellers-link">
+      <ul class="best-sellers-item-list">
+        <li class="best-seller-image-list">
+          <img
+            src="{{ product.featured_image | image_url }}"
+            alt="{{ product.featured_image.alt | escape }}"
+            width="100%"
+            height="100%"
+            class="best-sellers-image"
+          >
+          {% if product.metafields.custom.new == true %}
+            <span class="badge-new">New</span>
+          {% endif %}
+        </li>
+        <li class="best-sellers-title">{{ product.title }}</li>
+        <li class="best-sellers-description">{{ product.description }}</li>
+        <li class="best-sellers-price">{{ product.price | money }}</li>
+        <li class="best-sellers-color">
+          {% assign shown_colors = '' %}
+          {% for variant in product.variants %}
+            {% assign color = variant.option1 %}
+            {% unless shown_colors contains color %}
+              {% if variant.metafields.custom.color_icon %}
+                <a href="{{ product.url }}?variant={{ variant.id }}" class="color-thumb" title="{{ color }}">
+                  <img
+                    src="{{ variant.metafields.custom.color_icon | image_url }}"
+                    alt="{{ color }}"
+                    height="25px"
+                    width="25px"
+                  >
+                </a>
+                {% assign shown_colors = shown_colors | append: color | append: ',' %}
+              {% endif %}
+            {% endunless %}
+          {% endfor %}
+        </li>
+      </ul>
+    </a>
+  {% else %}
+    <a href="#" class="best-sellers-link">
+      <ul class="best-sellers-item-list">
+        <li>
+          <img
+            src="{{ 'best-seller.jpg' | asset_url }}"
+            alt="Placeholder"
+            width="100%"
+            height="100%"
+            class="best-sellers-image"
+          >
+        </li>
+        <li class="best-sellers-title">SUBLIME SCULPT</li>
+        <li class="best-sellers-description">LIGHT PADDED BANDEAU</li>
+        <li class="best-sellers-price">$50</li>
+      </ul>
+    </a>
+  {% endif %}
+</li>

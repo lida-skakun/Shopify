@@ -1,0 +1,69 @@
+<section class="best-sellers">
+  <h2 class="best-sellers-header">BEST SELLERS</h2>
+  <ul class="best-sellers-list">
+    {% for i in (1..4) %}
+      {% assign product_setting = 'best_seller_' | append: i %}
+      {% assign product_handle = section.settings[product_setting] %}
+
+      {% if product_handle != blank %}
+        {% assign product = all_products[product_handle] %}
+      {% else %}
+        {% assign product = null %}
+      {% endif %}
+
+      {% render 'best-sellers-product', product: product %}
+    {% endfor %}
+  </ul>
+  <slider-component class="slider-mobile-gutter block md:hidden">
+    <ul class="slider slider--mobile" role="list">
+      {% for i in (1..4) %}
+        {% assign product_setting = 'best_seller_' | append: i %}
+        {% assign product_handle = section.settings[product_setting] %}
+        {% assign product = all_products[product_handle] %}
+
+        {% if product %}
+          <li class="slider__slide">
+            {% render 'card-product', product: product %}
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </slider-component>
+
+  <h4 class="collection-link">
+    <a href="/">View Collection </a>
+  </h4>
+</section>
+
+{% schema %}
+{
+  "name": "Best Sellers",
+  "settings": [
+    {
+      "type": "product",
+      "id": "best_seller_1",
+      "label": "Best seller 1"
+    },
+    {
+      "type": "product",
+      "id": "best_seller_2",
+      "label": "Best seller 2"
+    },
+    {
+      "type": "product",
+      "id": "best_seller_3",
+      "label": "Best seller 3"
+    },
+    {
+      "type": "product",
+      "id": "best_seller_4",
+      "label": "Best seller 4"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Best Sellers"
+    }
+  ]
+}
+{% endschema %}
