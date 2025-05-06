@@ -1,0 +1,36 @@
+{
+  "article": [],
+  "blog": [],
+  "collection": [],
+  "company": [],
+  "company_location": [],
+  "location": [],
+  "market": [],
+  "order": [],
+  "page": [],
+  "product": [
+    {
+      "key": "new",
+      "namespace": "custom",
+      "name": "New",
+      "description": "New product",
+      "type": {
+        "name": "boolean",
+        "category": "TRUE_FALSE"
+      }
+    }
+  ],
+  "variant": [
+    {
+      "key": "color_icon",
+      "namespace": "custom",
+      "name": "Color Icon",
+      "description": "",
+      "type": {
+        "name": "file_reference",
+        "category": "REFERENCE"
+      }
+    }
+  ],
+  "shop": []
+}

@@ -1,0 +1,96 @@
+<section class="main-banners">
+  <div class="banner">
+    {% if section.settings.banner_image1 != blank %}
+      <img
+        src="{{ section.settings.banner_image1 | image_url }}"
+        alt="{{ section.settings.banner_image_alt1 }}"
+        width="100%"
+        height="auto;"
+      >
+    {% else %}
+      <img
+        src="{{ 'banner1.png' | asset_url }}"
+        width="100%"
+        height="auto;"
+      >
+    {% endif %}
+  </div>
+
+  <div class="additional-banners">
+    {% if section.settings.banner_image2 != blank %}
+      <img
+        src="{{ section.settings.banner_image2 | image_url }}"
+        alt="{{ section.settings.banner_image_alt2 }}"
+        width="auto"
+        height="auto"
+      >
+    {% else %}
+      <img
+        src="{{ 'banner2.png' | asset_url }}"
+        width="100%"
+        height="auto;"
+      >
+    {% endif %}
+
+    {% if section.settings.banner_image3 != blank %}
+      <img
+        src="{{ section.settings.banner_image3 | image_url }}"
+        alt="{{ section.settings.banner_image_alt3 }}"
+        width="auto"
+        height="auto"
+      >
+    {% else %}
+      <img
+        src="{{ 'banner3.png' | asset_url }}"
+        width="auto"
+        height="auto"
+      >
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_image1",
+      "label": "pick image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image2",
+      "label": "pick image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image3",
+      "label": "pick image 3"
+    },
+    {
+      "type": "text",
+      "id": "banner_image_alt1",
+      "label": "Alt text for banner image 1",
+      "default": "Main Banner"
+    },
+    {
+      "type": "text",
+      "id": "banner_image_alt2",
+      "label": "Alt text for banner image 2",
+      "default": "Main Banner"
+    },
+    {
+      "type": "text",
+      "id": "banner_image_alt3",
+      "label": "Alt text for banner image 3",
+      "default": "Main Banner"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default"
+    }
+  ]
+}
+{% endschema %}
