@@ -1,6 +1,12 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
 <section class="best-sellers">
   <h2 class="best-sellers-header">BEST SELLERS</h2>
-  <ul class="best-sellers-list">
+  <ul class="best-sellers-list" hidden md:flex>
     {% for i in (1..4) %}
       {% assign product_setting = 'best_seller_' | append: i %}
       {% assign product_handle = section.settings[product_setting] %}
@@ -14,26 +20,51 @@
       {% render 'best-sellers-product', product: product %}
     {% endfor %}
   </ul>
-  <slider-component class="slider-mobile-gutter block md:hidden">
-    <ul class="slider slider--mobile" role="list">
-      {% for i in (1..4) %}
-        {% assign product_setting = 'best_seller_' | append: i %}
-        {% assign product_handle = section.settings[product_setting] %}
-        {% assign product = all_products[product_handle] %}
+  <div class="md:hidden">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        {% for i in (1..4) %}
+          {% assign product_setting = 'best_seller_' | append: i %}
+          {% assign product_handle = section.settings[product_setting] %}
 
-        {% if product %}
-          <li class="slider__slide">
-            {% render 'card-product', product: product %}
-          </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-  </slider-component>
+          {% if product_handle != blank %}
+            {% assign product = all_products[product_handle] %}
+          {% else %}
+            {% assign product = null %}
+          {% endif %}
+
+          <div class="swiper-slide">
+            {% render 'best-sellers-product', product: product %}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
 
   <h4 class="collection-link">
     <a href="/">View Collection </a>
   </h4>
 </section>
+
+<script>
+  window.addEventListener('load', function () {
+    const swiper = new Swiper('.swiper', {
+      direction: 'horizontal',
+      loop: true,
+
+      pagination: {
+        el: '.swiper-pagination',
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  });
+</script>
 
 {% schema %}
 {

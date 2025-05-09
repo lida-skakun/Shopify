@@ -103,9 +103,26 @@ margin-right: 5px;
   margin: 40px;
   font-size: 15px;
 }
+.swiper {
+  width: 100%;
+  height: auto;
+}
 
-.slider-mobile-gutter {
-  display: none;
+.swiper-button-prev,
+.swiper-button-next {
+  color: #000000;
+  top:auto;
+  height: 20px;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 20px;
+}
+
+.swiper-pagination {
+  color: #000000;
+  bottom: 0;
 }
 
 @media screen and (width <= 768px) {
