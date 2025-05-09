@@ -94,6 +94,10 @@ font-size: 16px;
 .best-sellers-color {
 margin-top: 20px;
 }
+
+.best-sellers-color a {
+  text-decoration: none;
+}
 .best-sellers-color img {
 margin-right: 5px;
 }
