@@ -1,0 +1,79 @@
+<section class="promo-banner">
+  <div class="promo-banner-header">
+    <h4>LIMITED TIME ONLY</h4>
+    <h3>SALE UP TO 40% OFF</h3>
+    <button>SHOP NOW</button>
+  </div>
+  <div class="promo-banner-timer">
+    <div id="countdown" class="countdown-timer">
+      <span id="days"></span>
+      <span>:</span>
+      <span id="hours"></span>
+      <span>:</span>
+      <span id="minutes"></span>
+      <span>:</span>
+      <span id="seconds"></span>
+    </div>
+    <div class="countdown-labels">
+      <span>DAY</span>
+      <span>HOUR</span>
+      <span>MIN</span>
+      <span>SEC</span>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const endTimeString = '{{ section.settings.end_datetime }}';
+    const deadline = new Date(endTimeString);
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const timeLeft = deadline.getTime() - now;
+
+      if (isNaN(deadline.getTime())) {
+        document.getElementById('countdown').innerText = 'Incorrect date!';
+        return;
+      }
+
+      if (timeLeft < 0) {
+        document.getElementById('countdown').innerText = 'Time is up!';
+        return;
+      }
+
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((timeLeft / 1000 / 60) % 60);
+      const seconds = Math.floor((timeLeft / 1000) % 60);
+
+      document.getElementById('days').innerText = days;
+      document.getElementById('hours').innerText = hours;
+      document.getElementById('minutes').innerText = minutes;
+      document.getElementById('seconds').innerText = seconds;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Countdown Timer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "end_datetime",
+      "label": "Ending date (format: YYYY-MM-DDTHH:MM:SS)",
+      "default": "2025-12-31T23:59:59",
+      "info": "Enter date and time using ISO format (example, 2025-12-31T23:59:59)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Countdown Timer"
+    }
+  ]
+}
+{% endschema %}

@@ -1,50 +1,49 @@
 .main-banners,
 .best-sellers {
-  max-width: 1440px; 
+  max-width: 1440px;
   margin: 0 auto;
-
 }
 .main-banners {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 20px;
-    padding-bottom: 50px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  padding-bottom: 50px;
 }
 
 .additional-banners {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    gap: 10px;
-  }
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+}
 
 .best-sellers-header {
-    color: #1F727C;
-    letter-spacing: 4px;
-    font-weight: 600;
-    font-size: 28px;
-    text-align: center;
-  }
+  color: #1f727c;
+  letter-spacing: 4px;
+  font-weight: 600;
+  font-size: 28px;
+  text-align: center;
+}
 
 .best-sellers-list,
 .best-sellers-item-list {
-    padding: 0;
-    list-style: none;
-  }
+  padding: 0;
+  list-style: none;
+}
 
-  .best-sellers-link {
-    text-decoration: none;
-  }
+.best-sellers-link {
+  text-decoration: none;
+}
 
-  .best-sellers-link,
-  .collection-link a {
-    color: #1F727C;
-  }
+.best-sellers-link,
+.collection-link a {
+  color: #1f727c;
+}
 
 .best-sellers-list {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    margin: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 20px;
 }
 
 .best-seller-image-list {
@@ -56,28 +55,27 @@
   position: absolute;
   top: 8px;
   left: 8px;
-  background-color: #0091DA;
-  color: #FFFFFF;
+  background-color: #0091da;
+  color: #ffffff;
   text-transform: uppercase;
   padding: 0 5px;
   font-weight: 600;
 }
 
 .best-sellers-image {
-    max-width: 100%;
-    max-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .best-sellers-title,
 .best-sellers-description,
 .best-sellers-price {
-line-height: 1.5;
-
+  line-height: 1.5;
 }
 .best-sellers-title {
   text-transform: uppercase;
-letter-spacing: 0px;
-font-size: 16px;
+  letter-spacing: 0px;
+  font-size: 16px;
 }
 
 .best-sellers-description {
@@ -92,14 +90,14 @@ font-size: 16px;
 }
 
 .best-sellers-color {
-margin-top: 20px;
+  margin-top: 20px;
 }
 
 .best-sellers-color a {
   text-decoration: none;
 }
 .best-sellers-color img {
-margin-right: 5px;
+  margin-right: 5px;
 }
 
 .collection-link {
@@ -107,6 +105,11 @@ margin-right: 5px;
   margin: 40px;
   font-size: 15px;
 }
+
+.carousel-mobile {
+  display: none;
+}
+
 .swiper {
   width: 100%;
   height: auto;
@@ -115,7 +118,7 @@ margin-right: 5px;
 .swiper-button-prev,
 .swiper-button-next {
   color: #000000;
-  top:auto;
+  top: auto;
   height: 20px;
 }
 
@@ -129,18 +132,105 @@ margin-right: 5px;
   bottom: 0;
 }
 
+.promo-banner {
+  background-color: #1f727c;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  color: #ffffff;
+  padding: 70px;
+}
+
+.promo-banner-header {
+  grid-column: 1/3;
+}
+
+.promo-banner-header h4,
+.promo-banner-header h3 {
+  color: #ffffff;
+  margin: 10px;
+}
+
+.promo-banner-header h4 {
+  letter-spacing: 2px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.promo-banner-header h3,
+.promo-banner-header button,
+.promo-banner-timer {
+  font-family: "Cormorant", serif;
+}
+
+.promo-banner-header h3,
+.countdown-timer {
+  font-size: 34px;
+  font-weight: 300;
+}
+
+.promo-banner-header button {
+  background-color: #ff8674;
+  border: none;
+  padding: 15px 20px;
+  color: #ffffff;
+  margin-top: 20px;
+}
+
+.promo-banner-header button:hover {
+  cursor: pointer;
+}
+
+.promo-banner-timer {
+  grid-column: 3/4;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  padding-right: 100px;
+}
+
+.countdown-timer {
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 25px;
+}
+
+.countdown-labels {
+  grid-row: 2;
+  font-size: 12px;
+  font-weight: 100;
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+}
+
 @media screen and (width <= 768px) {
   .main-banners {
-      display: block;
+    display: block;
   }
   .additional-banners {
     display: none;
   }
-
-  .slider-mobile-gutter {
+  .carousel-mobile {
     display: block;
   }
+
   .best-sellers-list {
     display: none;
+  }
+
+  .promo-banner {
+    display: block;
+    text-align: center;
+    padding: 30px;
+  }
+
+  .promo-banner h3 {
+    font-size: 24px;
+  }
+
+  .promo-banner h4 {
+    font-size: 20px;
   }
 }

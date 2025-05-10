@@ -1,12 +1,9 @@
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 
 <section class="best-sellers">
   <h2 class="best-sellers-header">BEST SELLERS</h2>
-  <ul class="best-sellers-list" hidden md:flex>
+  <ul class="best-sellers-list">
     {% for i in (1..4) %}
       {% assign product_setting = 'best_seller_' | append: i %}
       {% assign product_handle = section.settings[product_setting] %}
@@ -20,7 +17,7 @@
       {% render 'best-sellers-product', product: product %}
     {% endfor %}
   </ul>
-  <div class="md:hidden">
+  <div class="carousel-mobile">
     <div class="swiper">
       <div class="swiper-wrapper">
         {% for i in (1..4) %}

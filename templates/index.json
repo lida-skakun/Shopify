@@ -9,6 +9,10 @@
  */
 {
   "sections": {
+    "promo_banner": {
+      "type": "promo-banner",
+      "settings": {}
+    },
     "main_banner": {
       "type": "main-banner",
       "settings": {
@@ -97,6 +101,7 @@
   "order": [
     "main_banner",
     "best_sellers",
+    "promo_banner",
     "image_banner",
     "featured_collection"
   ]
